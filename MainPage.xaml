@@ -4,20 +4,20 @@
              x:Class="All_Inclusive.MainPage">
 			 
     <ScrollView>
-        <VerticalStackLayout Padding="20">
+        <ContentView x:Name="FormContainer" Padding="20">
+            <VerticalStackLayout>
+                <Label Text="Full name" />
+                <Entry x:Name="FullNameEntry"
+                       Placeholder="Enter your full name"
+                       SemanticProperties.Description="Full name" />
 
-            <Label Text="Full name" />
-            <Entry Placeholder="Enter your full name"
-                   x:Name="FullNameEntry"
-                   SemanticProperties.Description="Full name" />
-
-            <Label Text="Email address" />
-            <Entry Placeholder="you@example.com"
-                   x:Name="EmailEntry"
-                   Keyboard="Email"
-                   SemanticProperties.Description="Email address" />
-
-        </VerticalStackLayout>
+                <Label Text="Email address" />
+                <Entry x:Name="EmailEntry"
+                       Placeholder="you@example.com"
+                       Keyboard="Email"
+                       SemanticProperties.Description="Email address" />
+            </VerticalStackLayout>
+        </ContentView>
     </ScrollView>
  
 </ContentPage>
