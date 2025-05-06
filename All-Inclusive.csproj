@@ -48,4 +48,39 @@
         <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <MauiXaml Update="Screens\MainPage.xaml">
+        <SubType>Designer</SubType>
+      </MauiXaml>
+      <MauiXaml Update="App.xaml">
+        <SubType>Designer</SubType>
+      </MauiXaml>
+      <MauiXaml Update="AppShell.xaml">
+        <SubType>Designer</SubType>
+      </MauiXaml>
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="App.xaml" />
+      <AdditionalFiles Include="AppShell.xaml" />
+      <AdditionalFiles Include="src\App.xaml" />
+      <AdditionalFiles Include="src\AppShell.xaml" />
+      <AdditionalFiles Include="src\screens\MainPage.xaml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="App.xaml.cs">
+        <DependentUpon>App.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="AppShell.xaml.cs">
+        <DependentUpon>AppShell.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="src\behaviors\" />
+    </ItemGroup>
+
 </Project>
