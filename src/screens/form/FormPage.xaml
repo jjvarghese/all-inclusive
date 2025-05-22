@@ -11,29 +11,38 @@
             <VerticalStackLayout Spacing="10">
                 <!-- Full Name -->
                 <Label Text="Full name" />
-                <Entry Text="{Binding FullName}" 
-                       Placeholder="Enter your full name"
-                       SemanticProperties.Description="Full name" />
+                <Frame BorderColor="Black" BackgroundColor="White" Padding="0">
+                     <Entry Text="{Binding FullName}" 
+                                    Placeholder="Enter your full name"
+                                    PlaceholderColor="#6B6B6B"
+                                    SemanticProperties.Description="Full name" />
+                </Frame>
+               
                 <Label Text="{Binding FullNameError}"
-                       TextColor="Red"
+                       TextColor="#C00000"
                        IsVisible="{Binding HasFullNameError}"
                        FontAttributes="Italic"
                        SemanticProperties.Description="{Binding FullNameError}" />
 
                 <!-- Email -->
                 <Label Text="Email address" />
-                <Entry Text="{Binding Email}"
-                       Placeholder="you@example.com"
-                       Keyboard="Email"
-                       SemanticProperties.Description="Email address" />
+                <Frame BorderColor="Black" BackgroundColor="White" Padding="0">
+                    <Entry Text="{Binding Email}"
+                           Placeholder="you@example.com"
+                           Keyboard="Email"
+                           PlaceholderColor="#6B6B6B"
+                           SemanticProperties.Description="Email address" />
+                </Frame>
+               
                 <Label Text="{Binding EmailError}"
-                       TextColor="Red"
+                       TextColor="#C00000"
                        IsVisible="{Binding HasEmailError}"
                        FontAttributes="Italic"
                        SemanticProperties.Description="{Binding EmailError}" />
 
                 <!-- Submit -->
                 <Button Text="Submit"
+                        BackgroundColor="#005BBB"
                         Command="{Binding SubmitCommand}" />
             </VerticalStackLayout>
         </ContentView>

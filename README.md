@@ -32,3 +32,15 @@ This app is fully WGAG 2.1 compliant:
 - **Why it's important**: Not everyone sees colors or sees them the same way.
 - **How this was implemented**: When validating forms, don't just make the field red, add some text as well.
 
+### SC 1.4.11: Non-text Contrast (Level AA)
+
+- **Goal**: Important visual information meets the same minimum contrast required for larger text.
+- **What to do**: Ensure meaningful visual cues achieve 3:1 against the background.
+- **Why it's important**: Some people cannot see elements with low contrast.
+- **How this was implemented**: Entry fields should have contrasting borders, buttons contrasting background colours. 
+
+### SC 1.4.3: Contrast (Minimum) (Level AA)
+- **Goal**: Text can be seen by more people.
+- **What to do**: Provide sufficient contrast between text and its background.
+- **Why it's important**: Some people cannot read faint text.
+- **How this was implemented**: Ensuring all text is contrasting - especially placeholder text which defaults to barely readable, and error text which a basic red doesn't contrast enough.
