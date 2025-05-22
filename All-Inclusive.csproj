@@ -58,14 +58,14 @@
       <MauiXaml Update="AppShell.xaml">
         <SubType>Designer</SubType>
       </MauiXaml>
+      <MauiXaml Update="src\screens\form\FormPage.xaml">
+        <SubType>Designer</SubType>
+      </MauiXaml>
     </ItemGroup>
 
     <ItemGroup>
       <AdditionalFiles Include="App.xaml" />
       <AdditionalFiles Include="AppShell.xaml" />
-      <AdditionalFiles Include="src\App.xaml" />
-      <AdditionalFiles Include="src\AppShell.xaml" />
-      <AdditionalFiles Include="src\screens\MainPage.xaml" />
     </ItemGroup>
 
     <ItemGroup>

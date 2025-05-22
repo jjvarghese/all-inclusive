@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:All_Inclusive.ViewModels"
+             x:Class="All_Inclusive.FormPage"
+             x:DataType="vm:FormViewModel"
+             Title="User Form">
+
+    <ScrollView>
+        <ContentView x:Name="FormContainer" Padding="20">
+            <VerticalStackLayout Spacing="10">
+                <!-- Full Name -->
+                <Label Text="Full name" />
+                <Entry Text="{Binding FullName}" 
+                       Placeholder="Enter your full name"
+                       SemanticProperties.Description="Full name" />
+                <Label Text="{Binding FullNameError}"
+                       TextColor="Red"
+                       IsVisible="{Binding HasFullNameError}"
+                       FontAttributes="Italic"
+                       SemanticProperties.Description="{Binding FullNameError}" />
+
+                <!-- Email -->
+                <Label Text="Email address" />
+                <Entry Text="{Binding Email}"
+                       Placeholder="you@example.com"
+                       Keyboard="Email"
+                       SemanticProperties.Description="Email address" />
+                <Label Text="{Binding EmailError}"
+                       TextColor="Red"
+                       IsVisible="{Binding HasEmailError}"
+                       FontAttributes="Italic"
+                       SemanticProperties.Description="{Binding EmailError}" />
+
+                <!-- Submit -->
+                <Button Text="Submit"
+                        Command="{Binding SubmitCommand}" />
+            </VerticalStackLayout>
+        </ContentView>
+    </ScrollView>
+</ContentPage>
