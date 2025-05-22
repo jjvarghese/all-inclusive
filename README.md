@@ -25,7 +25,10 @@ This app is fully WGAG 2.1 compliant:
 - **Limitations**: A mobile app _cannot fully meet this requirement_ because it requires machine-detectable, consistent meaning across UIs which is not possible for an app to achieve (Even if you add SemanticProperties.Description, it only helps screen readers read out a description — it doesn't let user agents semantically map that to e.g. “given-name”, “delete-button”, or “search”.). Additionally, Maui doesn't expose enough accessibility elements directly to achieve some of these requirement, so to get close to achieving it we can use some native code. These are platform-specific and inconsistent across OS versions. There’s no unified way to define “this icon represents a search function” or “this section is a complementary region” in a way that meets SC 1.3.6 expectations. There's also no consistent cross platform way of achieving autofill for forms.
 - **How this was implemented**: Partial compliance is achieved by setting landmark regions (ARIA) on the contentview with the help of native code. We need to use native code instead of SemanticProperties.Description, because doing that on wrapper views like ContentView MAUI will attempt to map that to AccessibilityLabel (for iOS) may not set IsAccessibilityElement = true on the underlying UIView meaning VoiceOver doesn't see it as a labelled region (similar issue with Android for its equivalent native property)
 
+### SC 1.4.1: Use of Color (Level A)
 
-
-
+- **Goal**: Color is not the only way of distinguishing information.
+- **What to do**: Use information in addition to color, such as shape or text, to convey meaning.
+- **Why it's important**: Not everyone sees colors or sees them the same way.
+- **How this was implemented**: When validating forms, don't just make the field red, add some text as well.
 
