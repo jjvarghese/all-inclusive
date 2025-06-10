@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:All_Inclusive.ViewModels"
+             xmlns:views="clr-namespace:All_Inclusive.views"
              x:Class="All_Inclusive.FormPage"
              x:DataType="vm:FormViewModel"
              Title="User Form">
@@ -9,14 +10,10 @@
     <ScrollView>
         <ContentView x:Name="FormContainer" Padding="20">
             <VerticalStackLayout Spacing="10">
-                <!-- Full Name -->
-                <Label Text="Full name" />
-                <Frame BorderColor="Black" BackgroundColor="White" Padding="0">
-                     <Entry Text="{Binding FullName}" 
-                                    Placeholder="Enter your full name"
-                                    PlaceholderColor="#6B6B6B"
-                                    SemanticProperties.Description="Full name" />
-                </Frame>
+                <views:FormField 
+                    Title="{Binding FullName}"
+                    Placeholder="Enter your full name"
+                    Description="Full name"/>
                
                 <Label Text="{Binding FullNameError}"
                        TextColor="#C00000"
@@ -24,16 +21,12 @@
                        FontAttributes="Italic"
                        SemanticProperties.Description="{Binding FullNameError}" />
 
-                <!-- Email -->
-                <Label Text="Email address" />
-                <Frame BorderColor="Black" BackgroundColor="White" Padding="0">
-                    <Entry Text="{Binding Email}"
-                           Placeholder="you@example.com"
-                           Keyboard="Email"
-                           PlaceholderColor="#6B6B6B"
-                           SemanticProperties.Description="Email address" />
-                </Frame>
-               
+                <views:FormField 
+                    Title="{Binding Email}"
+                    Placeholder="you@example.com"
+                    Description="Email address"
+                    Keyboard="Email"/>
+          
                 <Label Text="{Binding EmailError}"
                        TextColor="#C00000"
                        IsVisible="{Binding HasEmailError}"
