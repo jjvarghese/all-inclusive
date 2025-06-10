@@ -13,6 +13,7 @@
             BackgroundColor="White" 
             Padding="0">
             <Entry x:Name="FormEntry" 
+                   Text="{Binding Text, Mode=TwoWay}"
                    Placeholder="{Binding Placeholder}"
                    PlaceholderColor="#6B6B6B"
                    Keyboard="{Binding Keyboard}"

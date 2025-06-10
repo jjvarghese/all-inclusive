@@ -1,6 +1,8 @@
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using All_Inclusive.screens.form;
 
 namespace All_Inclusive.ViewModels;
 
@@ -8,6 +10,10 @@ public class FormViewModel : INotifyPropertyChanged
 {
     private string _fullName;
     private string _email;
+    
+    public ObservableCollection<FormMetadata> FieldLayout { get; set; }
+    
+    
 
     public string FullName
     {
@@ -20,7 +26,8 @@ public class FormViewModel : INotifyPropertyChanged
         get => _email;
         set { _email = value; OnPropertyChanged(); ClearEmailError(); }
     }
-
+    
+    
     public string FullNameError { get; private set; }
     public string EmailError { get; private set; }
 
@@ -32,6 +39,30 @@ public class FormViewModel : INotifyPropertyChanged
     public FormViewModel()
     {
         SubmitCommand = new Command(OnSubmit);
+        
+        FieldLayout = new ObservableCollection<FormMetadata>
+        {
+            new FormMetadata
+            {
+                Title = "Full name",
+                Placeholder = "Enter your full name",
+                Description = "Full name",
+                Text = FullName,
+                Keyboard = Keyboard.Default,
+                ErrorText = FullNameError,
+                IsErrorVisible = HasFullNameError
+            },
+            new FormMetadata
+            {
+                Title = "Email",
+                Placeholder = "you@example.com",
+                Description = "Email address",
+                Text = Email,
+                Keyboard = Keyboard.Email,
+                ErrorText = EmailError,
+                IsErrorVisible = HasEmailError
+            }
+        };
     }
 
     private void OnSubmit()

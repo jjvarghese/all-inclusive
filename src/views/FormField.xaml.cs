@@ -11,7 +11,15 @@ public partial class FormField : ContentView
     public static readonly BindableProperty TitleProperty = BindableProperty.Create("Title", typeof(string), typeof(FormField), null);
     public static readonly BindableProperty PlaceholderProperty = BindableProperty.Create("Placeholder", typeof(string), typeof(FormField), null);
     public static readonly BindableProperty DescriptionProperty = BindableProperty.Create("Description", typeof(string), typeof(FormField), null);
-    public static readonly BindableProperty KeyboardProperty = BindableProperty.Create("Keyboard", typeof(bool), typeof(FormField), Keyboard.Default);
+    public static readonly BindableProperty KeyboardProperty = BindableProperty.Create("Keyboard", typeof(Keyboard), typeof(FormField), Keyboard.Default);
+    public static readonly BindableProperty TextProperty =
+        BindableProperty.Create(nameof(Text), typeof(string), typeof(FormField), null, BindingMode.TwoWay);
+
+    public string Text
+    {
+        get => (string)GetValue(TextProperty);
+        set => SetValue(TextProperty, value);
+    }
     
     public String Title
     {
