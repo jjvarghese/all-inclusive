@@ -1,16 +1,43 @@
-namespace All_Inclusive.screens.form;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
-public class FormMetadata
+namespace All_Inclusive.screens.form
 {
-    public string Title { get; set; }
-    
-    public string Text { get; set; }
+    public class FormMetadata
+    {
+        private string _errorText;
+        private bool _isErrorVisible;
 
-    public string Placeholder { get; set; }
-    public string Description { get; set; }
-    public Keyboard Keyboard { get; set; }
-    
-    public string ErrorText { get; set; }
-    
-    public bool IsErrorVisible { get; set; }
+        public string Title { get; set; }
+        public string Placeholder { get; set; }
+        public string Description { get; set; }
+        public Keyboard Keyboard { get; set; }
+
+        public string ErrorText
+        {
+            get => _errorText;
+            set
+            {
+                _errorText = value;
+                // OnPropertyChanged();
+            }
+        }
+
+        public bool IsErrorVisible
+        {
+            get => _isErrorVisible;
+            set
+            {
+                _isErrorVisible = value;
+                // OnPropertyChanged();
+            }
+        }
+
+        // public event PropertyChangedEventHandler PropertyChanged;
+        //
+        // protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        // {
+        //     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        // }
+    }
 }

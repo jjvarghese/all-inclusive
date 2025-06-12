@@ -3,37 +3,31 @@
              xmlns:views="clr-namespace:All_Inclusive.views"
              x:Class="All_Inclusive.FormPage"
              xmlns:local="clr-namespace:All_Inclusive.screens.form"
-             xmlns:vm="clr-namespace:All_Inclusive.ViewModels"
+             xmlns:vm="clr-namespace:All_Inclusive.screens.form"
              x:DataType="vm:FormViewModel"
              Title="User Form">
 
     <ScrollView>
-        <VerticalStackLayout
-            Padding="20"
-            Spacing="20"
-            x:Name="FormContainer">
+        
+        <VerticalStackLayout Padding="20" Spacing="20" x:Name="FormContainer">
             <CollectionView ItemsSource="{Binding FieldLayout}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="local:FormMetadata">
                         <VerticalStackLayout Spacing="2">
-                            <views:FormField
+                            <views:FormField 
+                                FieldMetadata="{Binding .}"
                                 Title="{Binding Title}"
                                 Placeholder="{Binding Placeholder}"
                                 Description="{Binding Description}"
-                                Text="{Binding Text}"
-                                Keyboard="{Binding Keyboard}" />
-
-                            <Label
-                                x:DataType="local:FormMetadata"
-                                Text="{Binding FullNameError}"
-                                IsVisible="{Binding HasFullNameError}"
-                                TextColor="#C00000"
-                                FontAttributes="Italic" />
+                                KeyboardType="{Binding Keyboard}" />
+                            <Label Text="{Binding ErrorText}"
+                                   IsVisible="{Binding IsErrorVisible}"
+                                   TextColor="#C00000"
+                                   FontAttributes="Italic" />
                         </VerticalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
             <Button Text="Submit"
                     BackgroundColor="#005BBB"
                     Command="{Binding SubmitCommand}" />
