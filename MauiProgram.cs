@@ -24,10 +24,13 @@ public static class MauiProgram
         LabelHandler.Mapper.AppendToMapping("SuppressTalkBackHint", (handler, view) =>
         {
 #if ANDROID
-    var nativeLabel = handler.PlatformView;
-    nativeLabel.Clickable = true;
+            var nativeLabel = handler.PlatformView;
 
-    nativeLabel.SetAccessibilityDelegate(new SuppressActionHintDelegate());
+            // Required to make labels focusable in CollectionView
+            nativeLabel.Clickable = true;
+
+            // Attach the delegate that fakes it as non-interactive
+            nativeLabel.SetAccessibilityDelegate(new SuppressActionHintDelegate());
 #endif
         });
 
@@ -39,15 +42,16 @@ public static class MauiProgram
 
 class SuppressActionHintDelegate : Android.Views.View.AccessibilityDelegate
 {
-    public override void OnInitializeAccessibilityNodeInfo(Android.Views.View host, AccessibilityNodeInfo info)
+    public override void OnInitializeAccessibilityNodeInfo(Android.Views.View host, Android.Views.Accessibility.AccessibilityNodeInfo info)
     {
         base.OnInitializeAccessibilityNodeInfo(host, info);
 
-        // Clear action list
+        // Trick TalkBack: keep it focusable but not clickable
+        info.Clickable = false;
+        info.Focusable = true;
         info.ActionList?.Clear();
-
-        // Optional: prevent it from being seen as a Button
-        info.ClassName = Java.Lang.Class.FromType(typeof(TextView)).CanonicalName;
+        info.ClassName = "android.widget.TextView";
     }
 }
+
 #endif
