@@ -25,11 +25,7 @@ public static class MauiProgram
         {
 #if ANDROID
             var nativeLabel = handler.PlatformView;
-
-            // Required to make labels focusable in CollectionView
-            nativeLabel.Clickable = true;
-
-            // Attach the delegate that fakes it as non-interactive
+            
             nativeLabel.SetAccessibilityDelegate(new SuppressActionHintDelegate());
 #endif
         });
@@ -47,10 +43,8 @@ class SuppressActionHintDelegate : Android.Views.View.AccessibilityDelegate
         base.OnInitializeAccessibilityNodeInfo(host, info);
 
         // Trick TalkBack: keep it focusable but not clickable
-        info.Clickable = false;
         info.Focusable = true;
         info.ActionList?.Clear();
-        info.ClassName = "android.widget.TextView";
     }
 }
 
