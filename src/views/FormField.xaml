@@ -8,7 +8,9 @@
              AutomationProperties.IsInAccessibleTree="False"
              x:Class="All_Inclusive.views.FormField">
     <VerticalStackLayout>
-        <Label Text="{Binding Title, Source={x:Reference This}}" Margin="0,0,0,4" />
+        <Label 
+            Text="{Binding Title, Source={x:Reference This}}" 
+            Margin="0,0,0,4" />
         <Border 
             Stroke="Black"
             StrokeThickness="1"
